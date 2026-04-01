@@ -1,0 +1,103 @@
+﻿@page
+@model Transportbedrijf.Pages.ContactModel
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<section class="py-5">
+    <div class="container">
+        <div class="bg-white rounded shadow p-5">
+            <div class="text-center mb-4">
+                <h1>Contact opnemen</h1>
+                <p>
+                    Heeft u een vraag of wilt u een aanvraag doen voor personenvervoer of transport?
+                    Vul dan onderstaand formulier in.
+                </p>
+            </div>
+            @if (!string.IsNullOrEmpty(Model.Melding))
+            {
+                <p class="text-success fw-bold">@Model.Melding</p>
+            }
+
+            <form method="post">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <label for="naam" class="form-label">Naam</label>
+                        <input type="text" class="form-control" id="naam" name="Naam">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">E-mailadres</label>
+                        <input type="email" class="form-control" id="email" name="Email">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="telefoon" class="form-label">Telefoonnummer</label>
+                        <input type="text" class="form-control" id="telefoon" name="Telefoon">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="aanvraagtype" class="form-label">Type aanvraag</label>
+                        <select class="form-select" id="aanvraagtype" name="AanvraagType">
+                            <option selected disabled>Kies een type aanvraag</option>
+                            <option>Taxi</option>
+                            <option>Transport</option>
+                        </select>
+                    </div>
+
+                    <h3>Ophaallocatie</h3>
+                   
+                    <div class="col-md-6">
+                        <label for="ophaalstraat" class="form-label">Straat</label>
+                        <input type="text" class="form-control" id="ophaalstraat" name="OphaalStraat">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="ophaalpostcode" class="form-label">Postcode</label>
+                        <input type="text" class="form-control" id="ophaalpostcode" name="OphaalPostcode">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="ophaalstad" class="form-label">Stad</label>
+                        <input type="text" class="form-control" id="ophaalstad" name="OphaalStad">
+                    </div>
+
+                    <h3>Afzetlocatie</h3>
+
+                   
+                    <div class="col-md-6">
+                        <label for="afzetstraat" class="form-label">Straat</label>
+                        <input type="text" class="form-control" id="afzetstraat" name="AfzetStraat">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="afzetpostcode" class="form-label">Postcode</label>
+                        <input type="text" class="form-control" id="afzetpostcode" name="AfzetPostcode">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="afzetstad" class="form-label">Stad</label>
+                        <input type="text" class="form-control" id="afzetstad" name="AfzetStad">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="aantalkilometers" class="form-label">Geschat aantal kilometers</label>
+                        <input type="text" class="form-control" id="aantalkilometers" name="AantalKilometers">
+                    </div>
+
+                    <div class="col-12">
+                        <label for="bericht" class="form-label">Extra informatie</label>
+                        <textarea class="form-control" id="bericht" name="Bericht" rows="5"></textarea>
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-warning btn-lg fw-bold">Versturen</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Transportbedrijf</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Transportbedrijf.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/base/base.css" />
+</head>
+<body>
+    <header>
+        <partial name="~/Pages/Shared/_TopBar.cshtml" />
+        <nav class="border-bottom bg-white">
+            <div class="container d-flex justify-content-between align-items-center py-3">
+                <a href="/">
+                    <img src="~/image/LogoTransportCompany.png" alt="Logo" class="img-fluid" style="max-height: 50px;" />
+                </a>
+                <div class="d-flex align-items-center gap-3">
+                    <a class="text-decoration-none text-dark fw-bold px-3" href="/Diensten">Diensten</a>
+                    <a class="text-decoration-none text-dark fw-bold px-3" href="/Tarieven">Tarieven</a>
+                    <a class="text-decoration-none text-dark fw-bold px-3" href="/Contact">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2026 - Transportbedrijf - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
