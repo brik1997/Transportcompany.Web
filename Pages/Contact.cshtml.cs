@@ -29,7 +29,12 @@ namespace Transportbedrijf.Pages
 
         [BindProperty]
         public string OphaalStad { get; set; } = string.Empty;
+      
+        [BindProperty]
+        public DateTime PickupDate { get; set; }
 
+        [BindProperty]
+        public TimeSpan PickupTime { get; set; }
         [BindProperty]
         public string AfzetStraat { get; set; } = string.Empty;
 
@@ -69,6 +74,8 @@ namespace Transportbedrijf.Pages
                 OphaalStraat = OphaalStraat,
                 OphaalPostcode = OphaalPostcode,
                 OphaalStad = OphaalStad,
+                PickupDate = PickupDate,
+                PickupTime = PickupTime,
                 AfzetStraat = AfzetStraat,
                 AfzetPostcode = AfzetPostcode,
                 AfzetStad = AfzetStad,
