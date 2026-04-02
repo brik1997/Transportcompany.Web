@@ -1,0 +1,36 @@
+﻿@page
+@model TransportCompany.Web.Pages.RequestOverviewModel
+@{
+    ViewData["Title"] = "Request Overview";
+}
+
+<div class="container py-5">
+    <h1 class="mb-4">Request Overview</h1>
+
+    <div class="row g-4">
+        @foreach (var aanvraag in Model.Aanvragen)
+        {
+            <div class="col-12 col-md-6 col-xl-4">
+                <div class="request-card">
+                    <h3 class="request-title">@aanvraag.Naam</h3>
+
+                    <div class="request-details">
+                        <p><strong>Email:</strong> @aanvraag.Email</p>
+                        <p><strong>Phone:</strong> @aanvraag.Telefoon</p>
+                        <p><strong>Request Type:</strong> @aanvraag.AanvraagType</p>
+                        <p><strong>Pickup Street:</strong> @aanvraag.Ophaalstraat</p>
+                        <p><strong>Pickup Postal Code:</strong> @aanvraag.OphaalPostcode</p>
+                        <p><strong>Pickup City:</strong> @aanvraag.OphaalStad</p>
+                        <p><strong>Drop-off Street:</strong> @aanvraag.AfzetStraat</p>
+                        <p><strong>Drop-off Postal Code:</strong> @aanvraag.AfzetPostcode</p>
+                        <p><strong>Drop-off City:</strong> @aanvraag.AfzetStad</p>
+                        <p><strong>Kilometers:</strong> @aanvraag.AantalKilometers</p>
+                        <p><strong>Message:</strong> @aanvraag.Bericht</p>
+                        <p><strong>Pickup Date:</strong> @aanvraag.PickupDate</p>
+                        <p><strong>Pickup Time:</strong> @aanvraag.PickupTime</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

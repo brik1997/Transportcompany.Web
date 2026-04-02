@@ -1,9 +1,27 @@
 ﻿@page
 @model TransportCompany.Web.Pages.VehicleOverviewModel
 @{
+    ViewData["Title"] = "Vehicle Overview";
 }
 
 <div class="container py-5">
     <h1 class="mb-4">Vehicle Overview</h1>
-    <p>The list of vehicles will appear here later.</p>
+
+    <div class="row g-4">
+        @foreach (var vehicle in Model.Vehicles)
+        {
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="vehicle-card">
+                    <h3 class="vehicle-title">@vehicle.Brand @vehicle.ModelName</h3>
+
+                    <div class="vehicle-details">
+                        <p><strong>Build Year:</strong> @vehicle.BuildYear</p>
+                        <p><strong>Purchase Price:</strong> @vehicle.PurchasePrice</p>
+                        <p><strong>Mileage:</strong> @vehicle.Mileage</p>
+                        <p><strong>Capacity:</strong> @vehicle.Capacity</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>

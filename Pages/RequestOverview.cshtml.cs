@@ -1,16 +1,15 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TransportCompany.Data;
 
-
 namespace TransportCompany.Web.Pages
 {
-    public class VehicleOverviewModel : PageModel
+    public class RequestOverviewModel : PageModel
     {
         private readonly IConfiguration _configuration;
 
-        public List<Vehicle> Vehicles { get; set; } = new();
+        public List<Aanvraag> Aanvragen { get; set; } = new();
 
-        public VehicleOverviewModel(IConfiguration configuration)
+        public RequestOverviewModel(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -19,8 +18,8 @@ namespace TransportCompany.Web.Pages
         {
             string connectionString = _configuration.GetConnectionString("TransportDB");
 
-            VehicleRepository vehicleRepository = new VehicleRepository(connectionString);
-            Vehicles = vehicleRepository.GetAllVehicles();
+            AanvraagRepository aanvraagRepository = new AanvraagRepository(connectionString);
+            Aanvragen = aanvraagRepository.GetAllAanvragen();
         }
     }
 }

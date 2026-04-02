@@ -20,3 +20,42 @@ html {
 body {
   margin-bottom: 60px;
 }
+.vehicle-card {
+    min-height: 280px;
+    border-radius: 16px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.vehicle-title {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.vehicle-details p {
+    color: black;
+    margin-bottom: 8px;
+}
+.request-card {
+    min-height: 420px;
+    border-radius: 16px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.request-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.request-details p {
+    color: black;
+    margin-bottom: 8px;
+}

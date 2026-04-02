@@ -27,7 +27,7 @@ namespace TransportCompany.Web.Pages.Employees
         public decimal PurchasePrice { get; set; }
        
         [BindProperty]
-        public decimal Capacity { get; set; }
+        public int Capacity { get; set; }
 
         [BindProperty]
         public int Mileage { get; set; }
@@ -46,6 +46,7 @@ namespace TransportCompany.Web.Pages.Employees
                 ModelName = ModelName,
                 BuildYear = BuildYear,
                 PurchasePrice = PurchasePrice,
+                Capacity = Capacity,
                 Mileage = Mileage
             };
 
