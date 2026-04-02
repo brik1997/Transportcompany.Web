@@ -25,6 +25,9 @@ namespace TransportCompany.Web.Pages.Employees
 
         [BindProperty]
         public decimal PurchasePrice { get; set; }
+       
+        [BindProperty]
+        public decimal Capacity { get; set; }
 
         [BindProperty]
         public int Mileage { get; set; }

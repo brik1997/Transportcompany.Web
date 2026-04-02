@@ -49,6 +49,11 @@
                     </div>
 
                     <div class="mb-3">
+                        <label asp-for="Capacity" class="form-label"></label>
+                        <input asp-for="Capacity" class="form-control" type="number" step="0.01" />
+                    </div>
+
+                    <div class="mb-3">
                         <label asp-for="Mileage" class="form-label"></label>
                         <input asp-for="Mileage" class="form-control" type="number" step="0.01" />
                     </div>
@@ -60,7 +65,7 @@
             <div class="p-4 border rounded bg-white shadow-sm">
                 <h3 class="mb-3">Vehicles</h3>
                 <p>An overview of all vehicles and their depreciation will be shown here.</p>
-                <a href="/Employees/Vehicles" class="btn btn-outline-dark">View vehicles</a>
+                <a asp-page="/VehicleOverview" class="btn btn-outline-dark">View vehicles</a>
             </div>
         </div>
 
