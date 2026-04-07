@@ -1,11 +1,11 @@
 ﻿@page
-@model TransportCompany.Web.Pages.RequestOverviewModel
-@{
-    ViewData["Title"] = "Request Overview";
+@model TransportCompany.Web.Pages.AcceptRidesModel
+@{ 
+    ViewData["Title"] = "Accepted Rides";
 }
 
 <div class="container py-5">
-    <h1 class="mb-4">Request Overview</h1>
+    <h1 class="mb-4">Accept Rides</h1>
 
     <div class="row g-4">
         @foreach (var aanvraag in Model.Aanvragen)
@@ -28,18 +28,14 @@
                         <p><strong>Message:</strong> @aanvraag.Bericht</p>
                         <p><strong>Pickup Date:</strong> @aanvraag.PickupDate</p>
                         <p><strong>Pickup Time:</strong> @aanvraag.PickupTime</p>
+                        <p><strong>Status:</strong> @aanvraag.Status</p>
                     </div>
-                    <div class="mt-3 d-flex gap-2">
-                    <form method="post" asp-page-handler="Accept">
-                        <input type="hidden" name="id" value="@aanvraag.Id" />
-                        <button type="submit" class="btn btn-success">Accept</button>
+                    <div class="mt-3">
+                    <form method="post" asp-page-handler="Complete">
+                    <input type="hidden" name="id" value="@aanvraag.Id" />
+                    <button type="submit" class="btn btn-primary">Complete</button>
                     </form>
-
-                    <form method="post" asp-page-handler="Reject">
-                        <input type="hidden" name="id" value="@aanvraag.Id" />
-                        <button type="submit" class="btn btn-danger">Reject</button>
-                    </form>
-                    </div>
+                     </div>
                 </div>
             </div>
         }

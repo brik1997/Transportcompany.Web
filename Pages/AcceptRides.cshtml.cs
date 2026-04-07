@@ -1,17 +1,18 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Linq;
 using TransportCompany.Data;
 using TransportCompany.Logic;
 
 namespace TransportCompany.Web.Pages
 {
-    public class RequestOverviewModel : PageModel
+    public class AcceptRidesModel : PageModel
     {
         private readonly IConfiguration _configuration;
 
         public List<Aanvraag> Aanvragen { get; set; } = new();
 
-        public RequestOverviewModel(IConfiguration configuration)
+        public AcceptRidesModel(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -20,31 +21,20 @@ namespace TransportCompany.Web.Pages
         {
             string connectionString = _configuration.GetConnectionString("TransportDB");
 
-            AanvraagRepository aanvraagRepository = new AanvraagRepository(connectionString);
-            Aanvragen = aanvraagRepository.GetAllAanvragen()
-                .Where(a => a.Status == "New")
+            AanvraagService aanvraagService = new AanvraagService(connectionString);
+            Aanvragen = aanvraagService.GetAllAanvragen()
+                .Where(a => a.Status == "Accepted")
                 .ToList();
         }
-        public IActionResult OnPostAccept(int id)
+
+        public IActionResult OnPostComplete(int id)
         {
             string connectionString = _configuration.GetConnectionString("TransportDB");
 
             AanvraagService aanvraagService = new AanvraagService(connectionString);
-            aanvraagService.AcceptAanvraag(id);
+            aanvraagService.CompleteAanvraag(id);
 
             return RedirectToPage();
         }
-
-        public IActionResult OnPostReject(int id)
-        {
-            string connectionString = _configuration.GetConnectionString("TransportDB");
-
-            AanvraagService aanvraagService = new AanvraagService(connectionString);
-            aanvraagService.RejectAanvraag(id);
-
-            return RedirectToPage();
-        }
-
-        
     }
 }
