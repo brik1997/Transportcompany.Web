@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TransportCompany.Data;
 
-
+//haalt de voertuigen op uit de database en toont ze in een overzichtspagina
 namespace TransportCompany.Web.Pages
 {
     public class VehicleOverviewModel : PageModel
@@ -21,6 +21,8 @@ namespace TransportCompany.Web.Pages
 
             VehicleRepository vehicleRepository = new VehicleRepository(connectionString);
             Vehicles = vehicleRepository.GetAllVehicles();
+
+
         }
     }
 }

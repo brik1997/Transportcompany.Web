@@ -30,7 +30,7 @@ namespace TransportCompany.Web.Pages
             string connectionString = _configuration.GetConnectionString("TransportDB");
 
             AanvraagService aanvraagService = new AanvraagService(connectionString);
-            aanvraagService.AcceptAanvraag(id);
+            aanvraagService.acceptAanvraag(id);
 
             return RedirectToPage();
         }
