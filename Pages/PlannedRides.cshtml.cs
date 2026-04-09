@@ -1,3 +1,4 @@
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Linq;
@@ -6,18 +7,17 @@ using TransportCompany.Logic;
 
 namespace TransportCompany.Web.Pages
 {
-    public class AcceptRidesModel : PageModel
+    public class PlannedRidesModel : PageModel
     {
         private readonly IConfiguration _configuration;
 
         public List<Aanvraag> Aanvragen { get; set; } = new();
+        public List<Vehicle> Vehicles { get; set; } = new();
 
-        public AcceptRidesModel(IConfiguration configuration)
+        public PlannedRidesModel(IConfiguration configuration)
         {
             _configuration = configuration;
         }
-        
-        public List<Vehicle> Vehicles { get; set; } = new();
 
         public void OnGet()
         {
@@ -25,20 +25,19 @@ namespace TransportCompany.Web.Pages
 
             AanvraagService aanvraagService = new AanvraagService(connectionString);
             Aanvragen = aanvraagService.GetAllAanvragen()
-                .Where(a => a.Status == "Accepted")
+                .Where(a => a.Status == "Planned")
                 .ToList();
 
             VehicleService vehicleService = new VehicleService(connectionString);
             Vehicles = vehicleService.GetAllVehicles();
         }
 
-        public IActionResult OnPostComplete(int id, int vehicleId)
+        public IActionResult OnPostComplete(int id)
         {
             string connectionString = _configuration.GetConnectionString("TransportDB");
 
             AanvraagService aanvraagService = new AanvraagService(connectionString);
-            aanvraagService.AssignVehicleToAanvraag(id, vehicleId);
-            aanvraagService.PlanAanvraag(id);
+            aanvraagService.CompleteAanvraag(id);
 
             return RedirectToPage();
         }

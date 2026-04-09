@@ -1,15 +1,17 @@
 ﻿@page
-@model TransportCompany.Web.Pages.AcceptRidesModel
-@{ 
-    ViewData["Title"] = "Accepted Rides";
+@model TransportCompany.Web.Pages.PlannedRidesModel
+@{
+    ViewData["Title"] = "Planned Rides";
 }
 
 <div class="container py-5">
-    <h1 class="mb-4">Accept Rides</h1>
+    <h1 class="mb-4">Planned Rides</h1>
 
     <div class="row g-4">
         @foreach (var aanvraag in Model.Aanvragen)
         {
+            var vehicle = Model.Vehicles.FirstOrDefault(v => v.Id == aanvraag.VehicleId);
+
             <div class="col-12 col-md-6 col-xl-4">
                 <div class="request-card">
                     <h3 class="request-title">@aanvraag.Naam</h3>
@@ -29,23 +31,13 @@
                         <p><strong>Pickup Date:</strong> @aanvraag.PickupDate</p>
                         <p><strong>Pickup Time:</strong> @aanvraag.PickupTime</p>
                         <p><strong>Status:</strong> @aanvraag.Status</p>
+                        <p><strong>Vehicle:</strong> @(vehicle != null ? vehicle.Brand + " " + vehicle.ModelName : "No vehicle assigned")</p>
                     </div>
+
                     <div class="mt-3">
                         <form method="post" asp-page-handler="Complete">
                             <input type="hidden" name="id" value="@aanvraag.Id" />
-
-                            <div class="mb-3">
-                                <label class="form-label">Select Vehicle</label>
-                                <select name="vehicleId" class="form-select" required>
-                                    <option value="">Choose a vehicle</option>
-                                    @foreach (var vehicle in Model.Vehicles)
-                                    {
-                                        <option value="@vehicle.Id">@vehicle.Brand @vehicle.ModelName</option>
-                                    }
-                                </select>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Plan Ride</button>
+                            <button type="submit" class="btn btn-primary">Complete</button>
                         </form>
                     </div>
                 </div>
