@@ -1,0 +1,37 @@
+﻿@page
+@model TransportCompany.Web.Pages.VehicleTechnicalsModel
+@{
+    ViewData["Title"] = "Vehicle Technicals";
+}
+
+<div class="container py-5">
+    <h1 class="mb-4">Vehicle Technicals</h1>
+
+    <div class="row g-4">
+        @foreach (var item in Model.TechnicalItems)
+        {
+            <div class="col-12 col-md-6 col-xl-4">
+                <div class="request-card">
+                    <h3 class="request-title">@item.Aanvraag.Naam</h3>
+
+                    <div class="request-details">
+                        <p><strong>Ride Kilometers:</strong> @item.Aanvraag.AantalKilometers</p>
+                        <p><strong>Status:</strong> @item.Aanvraag.Status</p>
+                        <p><strong>Vehicle:</strong> @item.Vehicle.Brand @item.Vehicle.ModelName</p>
+                        <p><strong>Current Mileage:</strong> @item.Vehicle.Mileage</p>
+                        <p><strong>Depreciation Percentage:</strong> @item.DepreciationPercentage%</p>
+                        <p><strong>Depreciation:</strong> €@item.DepreciationAmount.ToString("0.00")</p>
+                        <p><strong>Current Vehicle Value:</strong> €@item.CurrentValue.ToString("0.00")</p>
+                    </div>
+
+                    <div class="mt-3">
+                        <form method="post" asp-page-handler="UpdateMileage">
+                            <input type="hidden" name="aanvraagId" value="@item.Aanvraag.Id" />
+                            <button type="submit" class="btn btn-primary">Update Mileage</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
